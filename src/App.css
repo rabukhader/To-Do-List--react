@@ -41,7 +41,7 @@ h1 {
   margin-bottom: 32px;
 }
 
-.todo-input {
+.todo-input , .search-input {
   padding: 14px 32px 14px 16px;
   border-radius: 4px 0 0 4px;
   border: 2px solid #5d0cff;
@@ -55,7 +55,7 @@ h1 {
   color: #e2e2e2;
 }
 
-.todo-button {
+.todo-button , .search-button {
   padding: 16px;
   border: none;
   border-radius: 0 4px 4px 0;

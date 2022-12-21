@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Search from './Search';
 import Todo from './ToDo';
 import TodoForm from './ToDoForm';  
 
@@ -45,6 +46,9 @@ function TodoList() {
     <>
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
+      <Search 
+      todos = {todos} 
+      />
       <Todo
         todos={todos}
         completeTodo={completeTodo}
