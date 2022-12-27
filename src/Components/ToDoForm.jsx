@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
 function TodoForm(props) {
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
-
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  });
 
   const handleChange = e => {
     setInput(e.target.value);
@@ -15,7 +10,6 @@ function TodoForm(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     props.onSubmit({
       id: Math.floor(Math.random() * 10000),
       text: input,
@@ -29,7 +23,6 @@ function TodoForm(props) {
       {props.edit ? (
         <>
           <input
-            placeholder='Update your item'
             value={input}
             onChange={handleChange}
             name='text'
@@ -58,5 +51,4 @@ function TodoForm(props) {
     </form>
   );
 }
-
 export default TodoForm;

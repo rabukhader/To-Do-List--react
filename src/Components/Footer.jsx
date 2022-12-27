@@ -6,12 +6,13 @@ function Footer(props) {
     if(value.isCompleted == false)
     sum++;
    }); */
-   let sum = 0;
-   for(let i =0 ; i<todos.length; i++)
+   let sum = todos.filter((todo)=> !todo.isComplete).length;
+
+   /* for(let i =0 ; i<todos.length; i++)
    {
     if(todos[i].isComplete == false)
     sum++;
-   }
+   } */
    
   return (
     <>

@@ -18,7 +18,6 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
       isComplete: ''
     });
   };
-  console.log(todos);
 
   if (edit.id) {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;
@@ -27,8 +26,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   return todos.map((todo, index) => (
     <div
       className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-      key={index}
-    >
+      key={index} >
       <div key={todo.id} onClick={() => completeTodo(todo.id)}>
         {todo.text}
       </div>
@@ -45,5 +43,4 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     </div>
   ));
 };
-
 export default Todo;

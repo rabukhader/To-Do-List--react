@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
-import Search from './Search';
 import Todo from './ToDo';
 import TodoForm from './ToDoForm';  
 
-
 function TodoList() {
   const [todos, setTodos] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const visibleToDos = todos.filter((todo)=>todo.text.includes(searchText))
 
   const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
-
     const newTodos = [todo, ...todos];
-
     setTodos(newTodos);
   };
 
@@ -27,8 +25,7 @@ function TodoList() {
   };
 
   const removeTodo = (id) => {
-    const removedArr = [...todos].filter(todo => todo.id !== id);
-
+    const removedArr = todos.filter(todo => todo.id !== id);
     setTodos(removedArr);
   };
 
@@ -42,19 +39,22 @@ function TodoList() {
     setTodos(updatedTodos);
   };
 
+  const onSearch = (e) =>{
+    setSearchText(e.target.value)
+  }
+
   return (
     <>
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
-      <Search 
-      todos = {todos} 
-      />
+      <div>
+        <input type="text" className='mb-3 search-input' value={searchText} onChange={onSearch} />
+      </div>
       <Todo
-        todos={todos}
+        todos={visibleToDos}
         completeTodo={completeTodo}
         removeTodo={removeTodo}
-        updateTodo={updateTodo}
-      />
+        updateTodo={updateTodo}/>
       <Footer todos = {todos} />
     </>
   );
