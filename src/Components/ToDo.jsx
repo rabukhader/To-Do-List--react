@@ -6,16 +6,19 @@ import TodoForm from './ToDoForm';
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
     id: null,
-    value: ''
+    value: '',
+    isComplete: ''
   });
 
   const submitUpdate = value => {
     updateTodo(edit.id, value);
     setEdit({
       id: null,
-      value: ''
+      value: '',
+      isComplete: ''
     });
   };
+  console.log(todos);
 
   if (edit.id) {
     return <TodoForm edit={edit} onSubmit={submitUpdate} />;

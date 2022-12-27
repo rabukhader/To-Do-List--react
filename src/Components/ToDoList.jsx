@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
 import Search from './Search';
 import Todo from './ToDo';
 import TodoForm from './ToDoForm';  
@@ -7,7 +8,7 @@ import TodoForm from './ToDoForm';
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = todo => {
+  const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
@@ -15,7 +16,6 @@ function TodoList() {
     const newTodos = [todo, ...todos];
 
     setTodos(newTodos);
-    console.log(...todos);
   };
 
   const updateTodo = (todoId, newValue) => {
@@ -26,13 +26,13 @@ function TodoList() {
     setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
   };
 
-  const removeTodo = id => {
+  const removeTodo = (id) => {
     const removedArr = [...todos].filter(todo => todo.id !== id);
 
     setTodos(removedArr);
   };
 
-  const completeTodo = id => {
+  const completeTodo = (id) => {
     let updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete;
@@ -55,6 +55,7 @@ function TodoList() {
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
+      <Footer todos = {todos} />
     </>
   );
 }

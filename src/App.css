@@ -145,3 +145,20 @@ h1 {
 .edit-icon {
   color: #fff;
 }
+#footer {
+  color: white;
+  border-radius: 20px;
+  margin: auto;
+  position: fixed;
+  width: 50%;
+  height: 50px;
+  background: linear-gradient(
+    90deg,
+    rgba(33, 3, 94, 0.534) 0%,
+    rgb(147, 143, 212) 100%
+  );
+  bottom: 10%;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
