@@ -48,7 +48,7 @@ function TodoList() {
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
       <div>
-        <input type="text" className='mb-3 search-input' value={searchText} onChange={onSearch} />
+        <input type="text" className='mb-3 search-input' value={searchText} onChange={onSearch} placeholder='Search'/>
       </div>
       <Todo
         todos={visibleToDos}
