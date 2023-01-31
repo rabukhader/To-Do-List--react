@@ -6,19 +6,17 @@ import TodoForm from './ToDoForm';
 async function getData(){
   let response =await fetch("http://localhost:3002/getTasks");
   let data= await response.json();
-
   return data.tasks;
 }
 async function postData(item){
   let response =await fetch("http://localhost:3002/addTask",{
     method:'POST',
-    body:item
+    body:JSON.stringify(item)
   });
-  console.log(item)
   let data= await response.json();
   return data.tasks;
 }
-function TodoList() {
+const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [searchText, setSearchText] = useState('');
   const visibleToDos = todos?.filter((todo)=>todo.text?.includes(searchText))
@@ -66,7 +64,6 @@ function TodoList() {
   const onSearch = (e) =>{
     setSearchText(e.target.value)
   }
-
   return (
     <>
       <h1>What's the Plan for Today?</h1>
@@ -83,5 +80,4 @@ function TodoList() {
     </>
   );
 }
-
 export default TodoList;
